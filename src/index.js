@@ -8,7 +8,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/App';
 import todoApp from './reducers';
-import 'todomvc-app-css/index.css';
+import '../static/css/index.css';
 
 const store = createStore(todoApp);
 

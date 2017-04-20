@@ -31,7 +31,6 @@
     "jsdom": "^5.6.1",
     "node-libs-browser": "^0.5.2",
     "react-addons-test-utils": "^0.14.7",
-    "todomvc-app-css": "^2.0.1",
     "webpack": "^1.9.11",
     "webpack-bundle-tracker": "^0.2.0",
     "webpack-dev-middleware": "^1.2.0",
