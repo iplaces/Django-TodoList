@@ -19,6 +19,7 @@ const store = createStore(todoApp, applyMiddleware(thunkMiddleware));
 store.dispatch(fetchTodolist());
 
 const rootElement = document.getElementById('container');
+
 render(
     <Provider store={store}>
         <App />

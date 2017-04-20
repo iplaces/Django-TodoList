@@ -29,7 +29,7 @@ TodoList.propTypes = {
         text: PropTypes.string.isRequired
     }).isRequired).isRequired,
     onTodoClick: PropTypes.func.isRequired,
-    onToggleClick: PropTypes.func.isRequired
+    onToggleClick: PropTypes.func.isRequired,
     onDeleteClick: PropTypes.func.isRequired
 };
 
