@@ -34,7 +34,7 @@ def todo_list(request):
 @csrf_exempt
 def todo_detail(request, id):
     '''
-    删除对应todo
+    删除对应todo, 修改todo状态
     '''
     try:
         todo = Todolist.objects.get(id=id)

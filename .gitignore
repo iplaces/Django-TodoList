@@ -1,5 +1,5 @@
 .idea
 node_modules
 .DS_Store
-/static/
+/static/js/dist/
 webpack-stats.json
