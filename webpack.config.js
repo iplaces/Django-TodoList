@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var BundleTracker = require('webpack-bundle-tracker');
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
@@ -8,14 +9,15 @@ module.exports = {
         './src/index'
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'main.js',
+        path: path.join(__dirname, 'static/js/dist'),
+        filename: 'main.dev.js',
         publicPath: '/assets/'
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin()
-    ],
+        new webpack.HotModuleReplacementPlugin(),
+        new BundleTracker({filename: './webpack-stats.json'})
+        ],
     module: {
         loaders: [
             {
