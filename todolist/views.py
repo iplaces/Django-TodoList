@@ -2,7 +2,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from .models import Todolist
 from .serializers import TodolistSerializer
@@ -33,7 +32,7 @@ def todo_list(request):
 
 
 @csrf_exempt
-def delete_todo(request, id):
+def todo_detail(request, id):
     '''
     删除对应todo
     '''
@@ -44,4 +43,9 @@ def delete_todo(request, id):
 
     if request.method == 'DELETE':
         todo.delete()
+        return HttpResponse(status=204)
+
+    elif request.method == 'GET':
+        todo.completed = not todo.completed
+        todo.save()
         return HttpResponse(status=204)
