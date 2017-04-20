@@ -1,8 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import * as types from '../constants/ActionTypes';
 
-let nextTodoId = 0;
-
 export const addTodoConst = (text, id) => {
     return {
         type: types.ADD_TODO,
@@ -65,16 +63,14 @@ export const fetchTodolist = () => {
 
 // 异步请求，向数据库中添加todo项
 export const addTodo = (text) => {
-    console.log('Add Todo!!!!!');
     return (dispatch) => {
-
-        return fetch('/todolist', {
-                method: "POST",
+        return fetch('/todolist/', {
+                method: "post",
                 headers: {
-                    'Accept': 'application/json',
+                    'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({text: text})
+                body: JSON.stringify({ text })
             })
             .then(response => response.json())
             .then(json => {
