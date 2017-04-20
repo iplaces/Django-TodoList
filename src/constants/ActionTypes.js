@@ -4,3 +4,5 @@ export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const TOGGLE_ALL = 'TOGGLE_ALL';
 export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
+
+export const GET_ALL_TODOS = 'GET_ALL_TODOS';

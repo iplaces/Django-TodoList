@@ -1,3 +1,4 @@
+import fetch from 'isomorphic-fetch';
 import * as types from '../constants/ActionTypes';
 
 let nextTodoId = 0;
@@ -40,5 +41,24 @@ export const setVisibilityFilter = (filter) => {
     return {
         type: types.SET_VISIBILITY_FILTER,
         filter
+    }
+};
+
+export const getAllTodos = (todos) => {
+    return {
+        type: types.GET_ALL_TODOS,
+        todos
+    }
+};
+
+
+// 异步请求，从数据库中获取todo列表
+export const fetchTodolist = () => {
+    return (dispatch) => {
+        return fetch(`/todolist`)
+            .then(response => response.json())
+            .then(json =>
+                dispatch(getAllTodos(json))
+            )
     }
 };

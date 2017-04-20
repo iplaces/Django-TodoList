@@ -28,6 +28,10 @@ const todo = (state, action) => {
 
 const todos = (state = [], action) => {
     switch (action.type) {
+        case types.GET_ALL_TODOS:
+            return [
+                ...action.todos
+            ];
         case types.ADD_TODO:
             return [
                 ...state,
