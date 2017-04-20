@@ -1,54 +1,7 @@
 import fetch from 'isomorphic-fetch';
-import * as types from '../constants/ActionTypes';
+import * as actionConst from './ActionConst';
 
-export const addTodoConst = (text, id) => {
-    return {
-        type: types.ADD_TODO,
-        id,
-        text
-    }
-};
-
-export const deleteTodoConst = (id) => {
-    return {
-        type: types.DELETE_TODO,
-        id
-    }
-};
-
-export const toggleTodoConst = (id) => {
-    return {
-        type: types.TOGGLE_TODO,
-        id
-    }
-};
-
-export const toggleAllConst = () => {
-    return {
-        type: types.TOGGLE_ALL
-    }
-};
-
-export const clearCompletedConst = () => {
-    return {
-        type: types.CLEAR_COMPLETED
-    }
-};
-
-export const setVisibilityFilter = (filter) => {
-    return {
-        type: types.SET_VISIBILITY_FILTER,
-        filter
-    }
-};
-
-export const getAllTodos = (todos) => {
-    return {
-        type: types.GET_ALL_TODOS,
-        todos
-    }
-};
-
+export const setVisibilityFilter = actionConst.setVisibilityFilter;
 
 // 异步请求，从数据库中获取todo列表
 export const fetchTodolist = () => {
@@ -56,7 +9,7 @@ export const fetchTodolist = () => {
         return fetch(`/todolist`)
             .then(response => response.json())
             .then(json =>
-                dispatch(getAllTodos(json))
+                dispatch(actionConst.getAllTodos(json))
             )
     }
 };
@@ -74,7 +27,7 @@ export const addTodo = (text) => {
             })
             .then(response => response.json())
             .then(json => {
-                dispatch(addTodoConst(text, json.id));
+                dispatch(actionConst.addTodoConst(text, json.id));
             })
             .catch(e => {
                 console.error(e)
@@ -89,7 +42,7 @@ export const deleteTodo = (id) => {
                 method: "DELETE"
             })
             .then(() => {
-                dispatch(deleteTodoConst(id));
+                dispatch(actionConst.deleteTodoConst(id));
             })
             .catch(e => {
                 console.error(e);
@@ -102,7 +55,7 @@ export const toggleTodo = (id) => {
     return (dispatch) => {
         return fetch('tododetail/' + id)
             .then(() => {
-                dispatch(toggleTodoConst(id));
+                dispatch(actionConst.toggleTodoConst(id));
             })
             .catch(e => {
                 console.error(e);
@@ -115,7 +68,7 @@ export const toggleAll = () => {
     return (dispatch) => {
         return fetch('changeall/')
             .then(() => {
-                dispatch(toggleAllConst());
+                dispatch(actionConst.toggleAllConst());
             })
             .catch(e => {
                 console.error(e);
@@ -130,7 +83,7 @@ export const clearCompleted = () => {
                 method: "DELETE"
             })
             .then(() => {
-                dispatch(clearCompletedConst());
+                dispatch(actionConst.clearCompletedConst());
             })
             .catch(e => {
                 console.error(e);
