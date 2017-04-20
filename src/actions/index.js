@@ -29,7 +29,7 @@ export const toggleAllConst = () => {
     }
 };
 
-export const clearCompleted = () => {
+export const clearCompletedConst = () => {
     return {
         type: types.CLEAR_COMPLETED
     }
@@ -74,7 +74,6 @@ export const addTodo = (text) => {
             })
             .then(response => response.json())
             .then(json => {
-                console.log(json);
                 dispatch(addTodoConst(text, json.id));
             })
             .catch(e => {
@@ -114,11 +113,24 @@ export const toggleTodo = (id) => {
 // 异步请求，改变所有todo的状态
 export const toggleAll = () => {
     return (dispatch) => {
-        return fetch('toggleall/', {
-                method: "GET"
-            })
+        return fetch('changeall/')
             .then(() => {
                 dispatch(toggleAllConst());
+            })
+            .catch(e => {
+                console.error(e);
+            })
+    }
+};
+
+// 异步请求，清除所有完成的todo
+export const clearCompleted = () => {
+    return (dispatch) => {
+        return fetch('changeall/', {
+                method: "DELETE"
+            })
+            .then(() => {
+                dispatch(clearCompletedConst());
             })
             .catch(e => {
                 console.error(e);

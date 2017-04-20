@@ -1,3 +1,4 @@
+# coding:utf-8
 from django.db import models
 
 
@@ -8,4 +9,4 @@ class Todolist(models.Model):
     create = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('create',)
+        ordering = ('-create',)  # 按照创建时间反向排序

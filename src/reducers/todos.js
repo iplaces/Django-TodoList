@@ -34,8 +34,8 @@ const todos = (state = [], action) => {
             ];
         case types.ADD_TODO:
             return [
-                ...state,
-                todo(undefined, action)
+                todo(undefined, action),
+                ...state
             ];
         case types.DELETE_TODO:
             return state.filter((todo) => todo.id !== action.id);

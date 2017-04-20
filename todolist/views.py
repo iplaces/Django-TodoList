@@ -52,9 +52,9 @@ def todo_detail(request, id):
 
 
 @csrf_exempt
-def toggle_all(request):
+def change_all(request):
     '''
-    修改所有todo状态
+    修改所有todo状态，清除所有完成的todo
     '''
     try:
         todos = Todolist.objects.all()
@@ -65,4 +65,10 @@ def toggle_all(request):
         for todo in todos:
             todo.completed = not todo.completed
             todo.save()
+        return HttpResponse(status=204)
+
+    elif request.method == 'DELETE':
+        for todo in todos:
+            if todo.completed is True:
+                todo.delete()
         return HttpResponse(status=204)
