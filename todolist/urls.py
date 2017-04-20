@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^todolist/$', views.todo_list),
     url(r'^tododetail/(?P<id>[0-9]+)/$', views.todo_detail),
+    url(r'^toggleall/$', views.toggle_all),
 ]

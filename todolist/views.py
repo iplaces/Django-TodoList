@@ -49,3 +49,20 @@ def todo_detail(request, id):
         todo.completed = not todo.completed
         todo.save()
         return HttpResponse(status=204)
+
+
+@csrf_exempt
+def toggle_all(request):
+    '''
+    修改所有todo状态
+    '''
+    try:
+        todos = Todolist.objects.all()
+    except Todolist.DoesNotExist:
+        return HttpResponse(status=404)
+
+    if request.method == 'GET':
+        for todo in todos:
+            todo.completed = not todo.completed
+            todo.save()
+        return HttpResponse(status=204)
