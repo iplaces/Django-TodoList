@@ -7,10 +7,10 @@ export const setVisibilityFilter = actionConst.setVisibilityFilter;
 export const fetchTodolist = () => {
     return (dispatch) => {
         return fetch(`/todolist`)
-            .then(response => response.json())
-            .then(json =>
-                dispatch(actionConst.getAllTodos(json))
-            )
+        .then(response => response.json())
+        .then(json =>
+            dispatch(actionConst.getAllTodos(json))
+        )
     }
 };
 
@@ -18,20 +18,20 @@ export const fetchTodolist = () => {
 export const addTodo = (text) => {
     return (dispatch) => {
         return fetch('/todolist/', {
-                method: "post",
-                headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ text })
-            })
-            .then(response => response.json())
-            .then(json => {
-                dispatch(actionConst.addTodoConst(text, json.id));
-            })
-            .catch(e => {
-                console.error(e)
-            });
+            method: "post",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ text })
+        })
+        .then(response => response.json())
+        .then(json => {
+            dispatch(actionConst.addTodoConst(text, json.id));
+        })
+        .catch(e => {
+            console.error(e)
+        });
     }
 };
 
@@ -39,14 +39,14 @@ export const addTodo = (text) => {
 export const deleteTodo = (id) => {
     return (dispatch) => {
         return fetch('tododetail/' + id, {
-                method: "DELETE"
-            })
-            .then(() => {
-                dispatch(actionConst.deleteTodoConst(id));
-            })
-            .catch(e => {
-                console.error(e);
-            });
+            method: "DELETE"
+        })
+        .then(() => {
+            dispatch(actionConst.deleteTodoConst(id));
+        })
+        .catch(e => {
+            console.error(e);
+        });
     }
 };
 
@@ -54,12 +54,12 @@ export const deleteTodo = (id) => {
 export const toggleTodo = (id) => {
     return (dispatch) => {
         return fetch('tododetail/' + id)
-            .then(() => {
-                dispatch(actionConst.toggleTodoConst(id));
-            })
-            .catch(e => {
-                console.error(e);
-            })
+        .then(() => {
+            dispatch(actionConst.toggleTodoConst(id));
+        })
+        .catch(e => {
+            console.error(e);
+        })
     }
 };
 
@@ -67,12 +67,12 @@ export const toggleTodo = (id) => {
 export const toggleAll = () => {
     return (dispatch) => {
         return fetch('changeall/')
-            .then(() => {
-                dispatch(actionConst.toggleAllConst());
-            })
-            .catch(e => {
-                console.error(e);
-            })
+        .then(() => {
+            dispatch(actionConst.toggleAllConst());
+        })
+        .catch(e => {
+            console.error(e);
+        })
     }
 };
 
@@ -80,13 +80,13 @@ export const toggleAll = () => {
 export const clearCompleted = () => {
     return (dispatch) => {
         return fetch('changeall/', {
-                method: "DELETE"
-            })
-            .then(() => {
-                dispatch(actionConst.clearCompletedConst());
-            })
-            .catch(e => {
-                console.error(e);
-            })
+            method: "DELETE"
+        })
+        .then(() => {
+            dispatch(actionConst.clearCompletedConst());
+        })
+        .catch(e => {
+            console.error(e);
+        })
     }
 };
