@@ -1,3 +1,11 @@
 from django.db import models
 
-# Create your models here.
+
+class Todolist(models.Model):
+    id = models.AutoField(primary_key=True)
+    text = models.CharField(max_length=300, blank=False, default='')
+    completed = models.BooleanField(default=False)
+    create = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('create',)
