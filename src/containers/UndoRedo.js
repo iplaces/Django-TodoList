@@ -8,18 +8,18 @@ const mapStateToProps = (state) => {
         canUndo: state.todos.past.length > 0,
         canRedo: state.todos.future.length > 0
     }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onUndo: () => dispatch(ActionCreators.undo()),
         onRedo: () => dispatch(ActionCreators.redo())
     }
-}
+};
 
 const UndoRedo = connect(
     mapStateToProps,
     mapDispatchToProps
-)(UndoRedoComp)
+)(UndoRedoComp);
 
-export default UndoRedo
+export default UndoRedo;

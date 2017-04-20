@@ -12,7 +12,10 @@ import todoApp from './reducers';
 import '../static/css/index.css';
 import { fetchTodolist } from './actions';
 
+// 初始化store
 const store = createStore(todoApp, applyMiddleware(thunkMiddleware));
+
+// 首次加载页面获取todos数据
 store.dispatch(fetchTodolist());
 
 const rootElement = document.getElementById('container');

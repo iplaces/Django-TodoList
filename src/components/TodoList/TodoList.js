@@ -30,6 +30,7 @@ TodoList.propTypes = {
     }).isRequired).isRequired,
     onTodoClick: PropTypes.func.isRequired,
     onToggleClick: PropTypes.func.isRequired
+    onDeleteClick: PropTypes.func.isRequired
 };
 
 export default TodoList;
