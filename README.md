@@ -16,6 +16,7 @@
 - [ ] Undo、Redo（仅前端部分，暂未完成后台接口）
 
 项目功能展示
+
 ![todolist](static/images/todolist.gif)
 
 
@@ -27,4 +28,20 @@
 - [ ] 支持按照不同的方式排序，如优先级，expire date
 
 
-##### 项目使用方法
+#### 使用方法
+clone repository
+```git
+git clone git@github.com:iplaces/Django-TodoList.git
+```
+
+安装依赖
+```
+npm install
+pip install -r requirements.txt
+```
+
+运行项目
+```
+npm start
+python manage.py runserver
+```
