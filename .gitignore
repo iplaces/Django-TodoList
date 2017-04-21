@@ -1,7 +1,10 @@
-.idea
 node_modules
-.DS_Store
 /static/js/dist/
+
+.idea
+.DS_Store
+npm-debug.log
+
 webpack-stats.json
 
 db.sqlite3
