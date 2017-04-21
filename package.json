@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Django React TodoList",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "./node_modules/.bin/webpack --config webpack.config.js"
   },
   "license": "MIT",
   "dependencies": {
